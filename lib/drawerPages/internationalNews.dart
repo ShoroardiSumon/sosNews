@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sosNews/dataModel/newsModel.dart';
-import 'package:sosNews/pages/singleNews.dart';
-import 'package:sosNews/pages/singleNews2.dart';
 
 class InternationalNews extends StatefulWidget {
   @override
@@ -39,9 +37,66 @@ class _InternationalNewsState extends State<InternationalNews> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: newsModelList.length,
-        itemBuilder: (BuildContext context, int index) {},
+      body: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+        ),
+        child: ListView.builder(
+          itemCount: 15,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: ListTile(
+                leading: Image.asset("assets/images/international/int11.jpg"),
+                title: Text("International"),
+                subtitle: Text('International News'),
+                trailing: PopupMenuButton(
+                  onSelected: (val) {
+                    switch (val) {
+                      case 'share':
+                        break;
+                      case 'save':
+                        break;
+                    }
+                  },
+                  itemBuilder: (BuildContext context) {
+                    return [
+                      PopupMenuItem(
+                          value: 'share',
+                          child: Row(
+                            children: <Widget>[
+                              Icon(Icons.share),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                'Share',
+                                style: TextStyle(fontSize: 20),
+                              )
+                            ],
+                          )),
+                      PopupMenuItem(
+                        value: 'save',
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.save),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Save',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ];
+                  },
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

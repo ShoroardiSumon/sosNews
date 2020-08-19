@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sosNews/dataBase/databaseHelper.dart';
 import 'package:sosNews/pages/newsDetail.dart';
 
 class SingleNews2 extends StatefulWidget {
@@ -74,7 +75,15 @@ class _SingleNews2State extends State<SingleNews2> {
                   Icons.more_vert,
                   color: Colors.white,
                 ),
-                onSelected: (val) {},
+                onSelected: (val) {
+                  switch (val) {
+                    case "share":
+                      break;
+                    case "save":
+                      _saveNews(context);
+                      break;
+                  }
+                },
                 itemBuilder: (BuildContext context) {
                   return [
                     PopupMenuItem(
@@ -113,5 +122,18 @@ class _SingleNews2State extends State<SingleNews2> {
         ),
       ),
     );
+  }
+
+  void _saveNews(BuildContext context) async {
+    NewsDB newsDB = NewsDB();
+    newsDB.newsTitle = widget.newsTitle;
+    newsDB.newsSubtitle = widget.newsSubtitle;
+    newsDB.newsPhoto = widget.newsPicture;
+    newsDB.newsDescription = widget.newsDescription;
+    print(widget.newsTitle);
+    print(newsDB);
+    DatabaseHelper helper = DatabaseHelper.instance;
+    int id = await helper.insertNews(newsDB);
+    print('id row: $id');
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sosNews/dataModel/newsModel.dart';
 import 'package:sosNews/drawerPages/internationalNews.dart';
+import 'package:sosNews/drawerPages/photoPage.dart';
 import 'package:sosNews/drawerPages/sportsNews.dart';
 import 'package:sosNews/pages/horizontalPhotoView.dart';
 import 'package:sosNews/pages/singleNews.dart';
@@ -118,7 +119,7 @@ class _HomeTabState extends State<HomeTab> {
                             child: InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Photos()));
+                                      builder: (context) => PhotoPage()));
                                 },
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
